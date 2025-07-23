@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HomeOutlined, AppstoreOutlined, UserOutlined } from '@ant-design/icons';
-import './index.scss';
+import './footer.module.scss';
 
 const Footer: React.FC = () => {
   const [selectedKey, setSelectedKey] = useState('1');

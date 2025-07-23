@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View } from '@tarojs/components';
-import './index.scss';
+import style from './index.module.scss';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { Row, Col } from 'antd';
@@ -19,8 +19,8 @@ const Categories: React.FC<CategoriesProps> = ({ categories = [] }) => {
   console.log('category:::', categories)
 
   return (
-    <div className="categories">
-      <div className="category-grid">
+    <div className={style.categories}>
+      <div className={style['category-grid']}>
         {categories.map((category, index) => (
           <div key={index} className="category-item">
             <img src={category?.image?.src} alt={category.name} />
@@ -85,7 +85,7 @@ const YouMayAlsoLike: React.FC = () => {
 export const getServerSideProps = async () => {
   try {
     const [err, data] = await http('GET', '/products/categories');
-
+    console.log('data111',data)
     if (err) {
       return {
         props: {
