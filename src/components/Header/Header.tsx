@@ -2,10 +2,11 @@ import React from 'react';
 import { Menu, Avatar, Input } from 'antd';
 import { ShoppingCartOutlined, UserOutlined, SearchOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Navigator } from '@tarojs/components';
+import style from './index.module.scss';
 
 const Header: React.FC = () => {
   return (
-    <div className="header">
+    <div className={style["header"]}>
       {/* 新增汉堡菜单图标 */}
       <MenuUnfoldOutlined style={{ fontSize: 24, cursor: 'pointer' }} />
 

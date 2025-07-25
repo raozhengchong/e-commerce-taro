@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HomeOutlined, AppstoreOutlined, UserOutlined } from '@ant-design/icons';
-import './footer.module.scss';
+import style from  './footer.module.scss';
 
 const Footer: React.FC = () => {
   const [selectedKey, setSelectedKey] = useState('1');
@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
 
   return (
     <div
-      className="footer"
+      className={style["footer"]}
       style={{
         display: 'flex',
         justifyContent: 'space-around',
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
     >
       <div
         onClick={() => handleItemClick('1')}
-        className={`footer-item ${selectedKey === '1' ? 'selected' : ''}`}
+        className={`${style["footer-item"]} ${selectedKey === '1' ? style.selected : ''}`}
         style={{ textAlign: 'center' }} // 添加居中对齐
       >
         {/* 替换为与图片一致的图标 */}
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
       </div>
       <div
         onClick={() => handleItemClick('2')}
-        className={`footer-item ${selectedKey === '2' ? 'selected' : ''}`}
+        className={`${style["footer-item"]} ${selectedKey === '2' ? style.selected : ''}`}
         style={{ textAlign: 'center' }} // 添加居中对齐
       >
         {/* 替换为与图片一致的图标 */}
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
       </div>
       <div
         onClick={() => handleItemClick('3')}
-        className={`footer-item ${selectedKey === '3' ? 'selected' : ''}`}
+        className={`${style["footer-item"]} ${selectedKey === '3' ? style.selected : ''}`}
         style={{ textAlign: 'center' }} // 添加居中对齐
       >
         {/* 替换为与图片一致的图标 */}
