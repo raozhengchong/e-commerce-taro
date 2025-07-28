@@ -56,7 +56,7 @@ const YouMayAlsoLike: React.FC = () => {
     },
     {
       image: 'https://placehold.co/150x200?text=Striped+Dress',
-      price: '$33.01',
+      price: '$33.11',
     },
   ];
 
