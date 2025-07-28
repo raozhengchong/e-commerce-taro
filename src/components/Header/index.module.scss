@@ -1,0 +1,232 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: fixed; /* 添加固定定位 */
+  top: 0;
+  left: 0;
+  width: 100%; /* 确保头部宽度为 100% */
+  z-index: 1000; /* 确保头部在其他内容之上 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .ant-avatar {
+    margin-right: 16px;
+  }
+
+  .anticon-search {
+    font-size: 24px;
+    margin-right: 16px;
+    cursor: pointer;
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 16px;
+  padding-top: 64px; /* 添加与头部高度相等的 padding-top */
+}
+
+.banner {
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .discount {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+    p {
+      margin: 4px 0 0;
+      font-size: 16px;
+    }
+  }
+}
+
+.categories {
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 16px 0;
+
+    .category-item {
+      text-align: center;
+
+      img {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+
+      span {
+        display: block;
+        margin-top: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.coupons {
+  background-color: #ffebcc;
+  padding: 16px;
+  text-align: center;
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .coupon-offer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-size: 24px;
+      color: #ff9900;
+      margin-right: 16px;
+    }
+
+    .go-button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #ff9900;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.vintage-shoes {
+  background-color: #f8f8f8;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+
+  .vintage-shoes-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .vintage-shoes-text {
+    text-align: left;
+
+    h3 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      color: #ff9900;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      color: #333;
+    }
+
+    .buy-now-button {
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #ff9900, #ffcc00);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(90deg, #ffcc00, #ff9900);
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .vintage-shoes-image {
+    width: 300px;
+    height: auto;
+  }
+}
+
+.you-may-also-like {
+  h2 {
+    margin: 16px 0;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .product-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%; /* 确保容器占据整个宽度 */
+      padding: 8px; /* 可选：为内容添加一些内边距 */
+
+      p {
+        margin: 0; /* 移除默认的段落间距 */
+        font-size: 18px;
+      }
+
+      .add-to-cart-button {
+        padding: 8px 16px;
+        background-color: #ff9900;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #ffcc00;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  .footer-item.selected span {
+    color: red; // 设置选中标签的文字颜色为红色
+    display: block;
+  }
+}

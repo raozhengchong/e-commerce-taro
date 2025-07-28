@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
 
   return (
     <div
-      className={style.footer}
+      className={style["footer"]}
       style={{
         display: 'flex',
         justifyContent: 'space-around',
