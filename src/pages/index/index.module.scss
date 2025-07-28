@@ -32,7 +32,7 @@
 .main-content {
   flex: 1;
   padding: 16px;
-  padding-top: 64px; /* 添加与头部高度相等的 padding-top */
+  padding-top: 20px; /* 添加与头部高度相等的 padding-top */
 }
 
 .banner {
@@ -59,6 +59,7 @@
 }
 
 .categories {
+  padding-top: 100px;
   .category-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -175,6 +176,7 @@
 }
 
 .you-may-also-like {
+  padding-bottom: 60px;
   h2 {
     margin: 16px 0;
     font-size: 24px;

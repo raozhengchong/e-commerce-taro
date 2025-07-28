@@ -66,7 +66,6 @@ const YouMayAlsoLike: React.FC = () => {
       <Row gutter={16}>
         {products.map((product, index) => (
           <Col key={index} xs={12} sm={8} md={6} lg={4}>
-
             <div className={style['product-item']}>
               <img src={product.image} alt={`Product ${index + 1}`} />
               <div className={style['product-details']}>
