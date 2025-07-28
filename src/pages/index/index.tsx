@@ -22,7 +22,7 @@ const Categories: React.FC<CategoriesProps> = ({ categories = [] }) => {
     <div className={style.categories}>
       <div className={style['category-grid']}>
         {categories.map((category, index) => (
-          <div key={index} className={style["category-item"]}>
+          <div key={index} className={style['category-item']}>
             <img src={category?.image?.src} alt={category.name} />
             <span>{category.name}</span>
           </div>
@@ -61,16 +61,17 @@ const YouMayAlsoLike: React.FC = () => {
   ];
 
   return (
-    <div className={style["you-may-also-like"]}>
+    <div className={style['you-may-also-like']}>
       <h2>You May Also Like</h2>
       <Row gutter={16}>
         {products.map((product, index) => (
           <Col key={index} xs={12} sm={8} md={6} lg={4}>
-            <div className={style["product-item"]}>
+
+            <div className={style['product-item']}>
               <img src={product.image} alt={`Product ${index + 1}`} />
-              <div className={style["product-details"]}>
+              <div className={style['product-details']}>
                 <p>{product.price}</p>
-                <button className={style["add-to-cart-button"]}>
+                <button className={style['add-to-cart-button']}>
                   <ShoppingCartOutlined /> Add to Cart
                 </button>
               </div>
@@ -117,7 +118,7 @@ const IndexPage: React.FC<{ categories: ICommonOption[] }> = ({ categories }) =>
       {/* Categories */}
       <Categories categories={categories} />
       {/* 中间内容 */}
-      <div className={style["main-content"]}>
+      <div className={style['main-content']}>
         {/* Banner */}
         <div className={style.banner}>
           <img
@@ -132,20 +133,20 @@ const IndexPage: React.FC<{ categories: ICommonOption[] }> = ({ categories }) =>
         {/* Coupons */}
         <div className={style.coupons}>
           <h3>Coupons Only For New Users</h3>
-          <div className={style["coupon-offer"]}>
+          <div className={style['coupon-offer']}>
             <span>GET 20% OFF</span>
-            <button className={style["go-button"]}>GO</button>
+            <button className={style['go-button']}>GO</button>
           </div>
         </div>
         {/* Vintage Shoes */}
-        <div className={style["vintage-shoes"]}>
-          <div className={style["vintage-shoes-content"]} >
-            <div className={style["vintage-shoes-text"]}>
+        <div className={style['vintage-shoes']}>
+          <div className={style['vintage-shoes-content']}>
+            <div className={style['vintage-shoes-text']}>
               <h3>UP TO 60%OFF</h3>
               <h2>Vintage Shoes</h2>
-              <button className={style["buy-now-button"]}>buy now &gt;</button>
+              <button className={style['buy-now-button']}>buy now &gt;</button>
             </div>
-            <img src="https://placehold.co/300x200?text=Vintage+Shoes" alt="Vintage Shoes" className={style["vintage-shoes-image"]} />
+            <img src="https://placehold.co/300x200?text=Vintage+Shoes" alt="Vintage Shoes" className={style['vintage-shoes-image']} />
           </div>
         </div>
         {/* You May Also Like */}

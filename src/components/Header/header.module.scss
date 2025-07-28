@@ -1,0 +1,24 @@
+.header {
+  position: fixed; /* 添加固定定位 */
+  top: 0;
+  left: 0;
+  width: 100%; /* 确保头部宽度为 100% */
+  z-index: 1000; /* 确保头部在其他内容之上 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .ant-avatar {
+    margin-right: 16px;
+  }
+
+  .anticon-search {
+    font-size: 24px;
+    margin-right: 16px;
+    cursor: pointer;
+  }
+}
