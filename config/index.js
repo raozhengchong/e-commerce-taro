@@ -66,7 +66,8 @@ const config = {
             mode: 'browser',
             customRoutes: {
                 '/pages/index/index': '/',
-                '/pages/stars/index': '/stars'
+                '/pages/stars/index': '/stars',
+                '/pages/RegisterPage/index': '/register'
             }
         }
     }
