@@ -1,47 +1,43 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Checkbox, Typography, Row, Col, Image } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { history } from 'umi';
+import { Form, Input, Button, Checkbox, Typography, Row, Col, message } from 'antd';
+// import { Link } from '@umijs/max';
 
 const { Title } = Typography;
 
 const RegisterPage: React.FC = () => {
-  const [captchaSrc, setCaptchaSrc] = useState<string>('/path/to/captcha.png');
+  const [form] = Form.useForm();
+  const [captcha, setCaptcha] = useState<string>('');
 
   const onFinish = (values: any) => {
     console.log('Received values of form:', values);
     // Handle registration logic here
-  };
-
-  const onCheckboxChange = (e: any) => {
-    if (!e.target.checked) {
-      alert('Please agree to the privacy policy.');
-    }
+    message.success('Registration successful!');
   };
 
   return (
     <div style={{ padding: '20px' }}>
       <Row justify="center">
         <Col span={12}>
-          <Title level={3}>Register</Title>
+          <Title level={4}>Register</Title>
           <Form
+            form={form}
             name="register"
             initialValues={{ remember: true }}
             onFinish={onFinish}
-            layout="vertical"
+            autoComplete="off"
           >
             <Form.Item
               name="email"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
-              <Input prefix={<UserOutlined />} placeholder="E-mail" />
+              <Input placeholder="E-mail" />
             </Form.Item>
 
             <Form.Item
               name="password"
               rules={[{ required: true, message: 'Please input your password!' }]}
             >
-              <Input.Password prefix={<LockOutlined />} placeholder="Password" />
+              <Input.Password placeholder="Password" />
             </Form.Item>
 
             <Form.Item
@@ -63,25 +59,25 @@ const RegisterPage: React.FC = () => {
                 }),
               ]}
             >
-              <Input.Password prefix={<LockOutlined />} placeholder="Confirm password" />
+              <Input.Password placeholder="Confirm password" />
             </Form.Item>
 
-            <Form.Item name="captcha" rules={[{ required: true, message: 'Please enter captcha!' }]}>
+            <Form.Item
+              name="captcha"
+              rules={[{ required: true, message: 'Please input the captcha!' }]}
+            >
               <Row gutter={8}>
                 <Col span={16}>
                   <Input placeholder="Captcha" />
                 </Col>
                 <Col span={8}>
-                  <Image src={captchaSrc} width="100%" onClick={() => setCaptchaSrc('/path/to/new-captcha.png')} />
+                  <img src={`https://placehold.co/${captcha}`} alt="captcha" onClick={() => setCaptcha(Math.random().toString(36).substring(7))} style={{ cursor: 'pointer', width: '100%' }} />
                 </Col>
               </Row>
             </Form.Item>
 
             <Form.Item>
-              <Checkbox onChange={onCheckboxChange}>
-                I agree to Fecmall{' '}
-                <a href="/privacy-policy">Privacy Policy</a>
-              </Checkbox>
+              <Checkbox> I agree to Fecmall Privacy Policy</Checkbox>
             </Form.Item>
 
             <Form.Item>
@@ -90,21 +86,17 @@ const RegisterPage: React.FC = () => {
               </Button>
             </Form.Item>
           </Form>
-          <div style={{ textAlign: 'center', marginTop: '20px' }}>
-            Or Join With
-            <Row gutter={16} style={{ marginTop: '10px' }}>
-              <Col>
-                <Button icon={<img src="/path/to/facebook-icon.png" alt="Facebook" />} block>
-                  Facebook
-                </Button>
-              </Col>
-              <Col>
-                <Button icon={<img src="/path/to/line-icon.png" alt="Line" />} block>
-                  Line
-                </Button>
-              </Col>
-            </Row>
-          </div>
+          {/*<div style={{ textAlign: 'center', marginTop: '20px' }}>*/}
+          {/*  Or Join With*/}
+          {/*  <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '10px' }}>*/}
+          {/*    <Link href="#">*/}
+          {/*      <img src="https://placehold.co/40x40?text=fb" alt="Facebook" style={{ width: '40px', height: '40px' }} />*/}
+          {/*    </Link>*/}
+          {/*    <Link href="#">*/}
+          {/*      <img src="https://placehold.co/40x40?text=wechat" alt="WeChat" style={{ width: '40px', height: '40px' }} />*/}
+          {/*    </Link>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
         </Col>
       </Row>
     </div>

@@ -2,11 +2,28 @@ import React, { useState } from 'react';
 import { HomeOutlined, AppstoreOutlined, UserOutlined } from '@ant-design/icons';
 import style from './footer.module.scss';
 
+const mergeJson = {
+  '/': '1',
+  '/catalog/categorylist': '2'
+}
+
 const Footer: React.FC = () => {
+  // console.log('window.location.pathname:::', window.location.pathname)
+  // console.log('mergeJson[location.pathname]:::', mergeJson[window.location.pathname])
   const [selectedKey, setSelectedKey] = useState('1');
+
 
   const handleItemClick = (key: string) => {
     setSelectedKey(key);
+    if (key === '1') {
+      window.location.href = '/';
+      return;
+    }
+
+    if (key === '2') {
+      window.location.href = '/catalog/categorylist';
+      return;
+    }
   };
 
   return (
