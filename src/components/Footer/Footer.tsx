@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Taro from '@tarojs/taro';
 import { HomeOutlined, AppstoreOutlined, UserOutlined } from '@ant-design/icons';
 import style from './footer.module.scss';
 
@@ -7,22 +8,50 @@ const mergeJson = {
   '/catalog/categorylist': '2'
 }
 
+const routeMap: Record<string, string> = {
+  '1': '/pages/index/index',
+  '2': '/pages/catalog/categorylist/index',
+  '3': '/pages/RegisterPage/index'
+}
+
 const Footer: React.FC = () => {
   // console.log('window.location.pathname:::', window.location.pathname)
   // console.log('mergeJson[location.pathname]:::', mergeJson[window.location.pathname])
   const [selectedKey, setSelectedKey] = useState('1');
 
-
-  const handleItemClick = (key: string) => {
-    setSelectedKey(key);
-    if (key === '1') {
-      window.location.href = '/';
-      return;
+  useEffect(() => {
+    // set initial selected key based on current pathname (guard for SSR)
+    if (typeof window !== 'undefined') {
+      const key = mergeJson[window.location.pathname];
+      if (key) setSelectedKey(key);
     }
+  }, []);
 
-    if (key === '2') {
-      window.location.href = '/catalog/categorylist';
+
+  const handleItemClick = async (key: string) => {
+    setSelectedKey(key);
+    const url = routeMap[key];
+    if (!url) return;
+
+    try {
+      if (key === '1') {
+        console.log(1)
+        // go to home as a full re-launch (replace stack)
+        await Taro.reLaunch({ url });
+        return;
+      }
+
+      console.log(2)
+      // normal navigation for other pages
+      await Taro.navigateTo({ url });
       return;
+    } catch (err) {
+      // fallback for environments where Taro navigation isn't available
+      if (typeof window !== 'undefined') {
+        // convert Taro page path to a web path if possible
+        const webPath = url.replace(/^\/pages/, '');
+        window.location.href = webPath || '/';
+      }
     }
   };
 
