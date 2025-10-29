@@ -130,6 +130,12 @@
   padding: 6px 6px;
 }
 
+/* clickable wrapper for thumbnail to indicate interactivity */
+.thumb-link {
+  display: block;
+  cursor: pointer;
+}
+
 /* narrower image centered in column */
 .thumb-card img {
   width: 100%;

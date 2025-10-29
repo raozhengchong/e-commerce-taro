@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { View } from '@tarojs/components';
+import Taro from '@tarojs/taro';
 import style from './index.module.scss';
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
@@ -88,10 +89,22 @@ const CategoryListPage: React.FC<CategoryListProps> = ({ categories }) => {
     return map;
   }, [categories]);
 
-
   // 左侧点击切换
   const onSelectLeft = (catId: string) => {
     setSelected(catId);
+  };
+
+  // 打开 product-list，传 category id（使用 Taro.navigateTo，H5 回退）
+  const openProductList = async (catId: number | string) => {
+    const url = `/pages/catalog/product-list/index?category=${catId}`;
+    try {
+      await Taro.navigateTo({ url });
+    } catch (err) {
+      if (typeof window !== 'undefined') {
+        // 回退到 H5 路径（简洁映射）
+        window.location.href = `/catalog/product-list?category=${catId}`;
+      }
+    }
   };
 
   // 右侧当前父分类下的子分类分组
@@ -133,10 +146,16 @@ const CategoryListPage: React.FC<CategoryListProps> = ({ categories }) => {
                 <section className={style['cat-section']} key={child.id}>
                   <div className={style['section-header']}>
                     <div className={style['section-title']}>{child.name}</div>
-                    <a href={`/catalog/category/${child.id}`} className={style['section-all']}>
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      className={style['section-all']}
+                      onClick={() => openProductList(child.id)}
+                      onKeyPress={(e) => { if ((e as any).key === 'Enter') openProductList(child.id); }}
+                    >
                       <span>ALL</span>
                       <RightOutlined />
-                    </a>
+                    </div>
                   </div>
 
                   <div className={style['section-body']}>
@@ -144,7 +163,15 @@ const CategoryListPage: React.FC<CategoryListProps> = ({ categories }) => {
                       {items.slice(0, 8).map((it: any, idx: number) => (
                         // 使用 24 栅格中的 8 -> 保持 3 列布局在各档位一致
                         <Col key={idx} xs={8} sm={8} md={8} lg={8}>
-                          <ThumbCard img={it?.image?.src || `https://placehold.co/100x140?text=${encodeURIComponent(it.name || 'Item')}`} title={it.name} />
+                          <div
+                            role="button"
+                            tabIndex={0}
+                            className={style['thumb-link']}
+                            onClick={() => openProductList(it.id)}
+                            onKeyPress={(e) => { if ((e as any).key === 'Enter') openProductList(it.id); }}
+                          >
+                            <ThumbCard img={it?.image?.src || `https://placehold.co/100x140?text=${encodeURIComponent(it.name || 'Item')}`} title={it.name} />
+                          </div>
                         </Col>
                       ))}
                     </Row>

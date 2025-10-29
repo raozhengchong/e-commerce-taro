@@ -13,22 +13,17 @@ const config = {
     plugins: [
         'tarojs-plugin-platform-nextjs'
     ],
-    defineConstants: {
-    },
+    defineConstants: {},
     copy: {
-        patterns: [
-        ],
-        options: {
-        }
+        patterns: [],
+        options: {}
     },
     framework: 'react',
     mini: {
         postcss: {
             pxtransform: {
                 enable: true,
-                config: {
-
-                }
+                config: {}
             },
             url: {
                 enable: true,
@@ -51,24 +46,29 @@ const config = {
         postcss: {
             autoprefixer: {
                 enable: true,
-                config: {
-                }
+                config: {}
             },
             cssModules: {
-                enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+                enable: false,
                 config: {
-                    namingPattern: 'module', // 转换模式，取值为 global/module
+                    namingPattern: 'module',
                     generateScopedName: '[name]__[local]___[hash:base64:5]'
                 }
             }
+        },
+        // Ensure prebundle config exists to satisfy H5WebpackPlugin expectations
+        prebundle: {
+            enable: false
         },
         router: {
             mode: 'browser',
             customRoutes: {
                 '/pages/index/index': '/',
                 '/pages/catalog/categorylist/index': '/catalog/categorylist',
+                '/pages/catalog/product-list/index': '/catalog/product-list',
                 '/pages/stars/index': '/stars',
                 '/pages/RegisterPage/index': '/register',
+                '/pages/productList/index': '/productList'
             }
         }
     }
