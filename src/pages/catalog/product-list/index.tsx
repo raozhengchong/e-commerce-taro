@@ -43,7 +43,7 @@ const ProductCard: React.FC<{ product: any }> = ({ product }) => {
         <div className={style['product-title']}>{product.title}</div>
         <div className={`${style['product-price']} ${priceHasOld ? style['has-old'] : ''}`}>
           <span className={style['price']}>${product?.price}</span>
-          {/*{product?.oldPrice && <span className={style['old-price']}>${product?.oldPrice}</span>}*/}
+          {product?.oldPrice && <span className={style['old-price']}>${product?.oldPrice}</span>}
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@ const ProductListPage: React.FC = () => {
       title: i % 2 === 0 ? `Fashion Dress ${i + 1}` : `Casual Dress ${i + 1}`,
       image: `https://placehold.co/360x480?text=Prod+${i + 1}`,
       price: 111,
-      oldPrice: i % 3 === 0 ? (Math.random() * 300 + 80).toFixed(2) : undefined
+      oldPrice: 222
     }));
   }, []);
 
