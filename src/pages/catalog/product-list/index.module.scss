@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 16px;
+  padding: 10px 12px;
   background: #fff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -19,72 +19,76 @@
 
 .content {
   padding: 12px 12px 80px;
-  max-width: 460px;
+  max-width: 720px; /* keep centered and constrained */
   margin: 0 auto;
-  background: #f7f7f7;
+  background: #fafafa; /* light gray background like screenshot */
 }
 
 /* product card */
 .product-card {
   background: #fff;
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   border: 1px solid #eee;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   height: 100%;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  /* ensure card fills column height so image + info align */
 }
 
-/* reduce internal padding so image occupies more space like the screenshot */
+/* image wrapper keeps a tall aspect similar to screenshot */
 .product-image-wrapper {
   position: relative;
-  padding: 6px 6px 0 6px;
+  padding: 8px;
   box-sizing: border-box;
   background: #fff;
 }
 .product-image-wrapper img {
   width: 100%;
-  height: 300px; /* taller to match product portrait crops */
+  height: 340px; /* 微调为更高的纵向裁剪 */
   object-fit: cover;
   border-radius: 4px;
   display: block;
 }
 
-/* smaller cart overlay like screenshot */
+/* cart overlay: small white circular button in bottom-right */
 .cart-overlay {
   position: absolute;
-  right: 10px;
-  bottom: 12px;
+  right: 12px; /* 更靠内 */
+  bottom: 16px; /* 微调位置 */
   background: #fff;
-  width: 30px;
-  height: 30px;
+  width: 34px; /* 稍小 */
+  height: 34px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
   border: 1px solid #eee;
   color: #333;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .product-info { padding: 8px 12px 14px; display: flex; flex-direction: column; gap: 6px; }
-.product-title { font-size: 13px; color: #333; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+/* hide title as screenshot doesn't show text title */
+.product-title { display: none; }
 
-/* price layout: current price pink on top, old price smaller and struck-through below */
+/* price layout: default current price dark; when has-old -> pink and bolder */
 .product-price { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
-.price { color: #ff2d55; font-weight: 700; font-size: 15px; }
+.price { color: #222; font-weight: 600; font-size: 15px; }
+.product-price.has-old .price { color: #ff2d55; font-weight: 700; }
 .old-price { color: #999; font-size: 12px; text-decoration: line-through; margin-top: 0; }
 
-/* when no old price, keep price aligned */
-.product-price:not(.has-old) .price { margin-bottom: 0; }
+/* expose a module-scoped class name so style['has-old'] is defined in JS */
+.has-old {}
 
-/* gutters for grid */
-.ant-row { margin-left: -8px; margin-right: -8px; }
-.ant-col { padding-left: 8px; padding-right: 8px; }
+/* subtle card spacing visual: increase row/col gutters slightly to match screenshot spacing */
+.ant-row { margin-left: -10px; margin-right: -10px; }
+.ant-col { padding-left: 10px; padding-right: 10px; margin-bottom: 6px; }
 
 @media (max-width: 576px) {
-  .product-image-wrapper img { height: 220px; }
+  .product-image-wrapper img { height: 280px; }
   .content { padding: 8px; }
 }
